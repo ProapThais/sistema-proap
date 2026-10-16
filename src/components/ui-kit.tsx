@@ -27,7 +27,7 @@ const tones = {
   accent: "bg-accent/15 text-accent",
 };
 export type Tone = keyof typeof tones;
-export function Badge({ children, tone = "neutral" }: { children: ReactNode; tone?: Tone }) {
+export function Badge({ children, tone = "neutral" }: { children: ReactNode; tone?: Tone | undefined }) {
   return <span className={cn("inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold", tones[tone])}>{children}</span>;
 }
 
