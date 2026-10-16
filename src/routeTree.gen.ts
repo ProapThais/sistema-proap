@@ -10,33 +10,206 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdministracaoRouteImport } from './routes/administracao'
+import { Route as AtendimentosRouteImport } from './routes/atendimentos'
+import { Route as AulasRouteImport } from './routes/aulas'
+import { Route as DemandasRouteImport } from './routes/demandas'
+import { Route as FrequenciaRouteImport } from './routes/frequencia'
+import { Route as MatriculasRouteImport } from './routes/matriculas'
+import { Route as PessoasRouteImport } from './routes/pessoas'
+import { Route as RelatoriosRouteImport } from './routes/relatorios'
+import { Route as TurmasRouteImport } from './routes/turmas'
+import { Route as FamiliasIndexRouteImport } from './routes/familias.index'
+import { Route as FamiliasIdRouteImport } from './routes/familias.$id'
+import { Route as FamiliasNovaRouteImport } from './routes/familias.nova'
+import { Route as FamiliasIdEditarRouteImport } from './routes/familias.$id_.editar'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdministracaoRoute = AdministracaoRouteImport.update({
+  id: '/administracao',
+  path: '/administracao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtendimentosRoute = AtendimentosRouteImport.update({
+  id: '/atendimentos',
+  path: '/atendimentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AulasRoute = AulasRouteImport.update({
+  id: '/aulas',
+  path: '/aulas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemandasRoute = DemandasRouteImport.update({
+  id: '/demandas',
+  path: '/demandas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FrequenciaRoute = FrequenciaRouteImport.update({
+  id: '/frequencia',
+  path: '/frequencia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatriculasRoute = MatriculasRouteImport.update({
+  id: '/matriculas',
+  path: '/matriculas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PessoasRoute = PessoasRouteImport.update({
+  id: '/pessoas',
+  path: '/pessoas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosRoute = RelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TurmasRoute = TurmasRouteImport.update({
+  id: '/turmas',
+  path: '/turmas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FamiliasIndexRoute = FamiliasIndexRouteImport.update({
+  id: '/familias/',
+  path: '/familias/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FamiliasIdRoute = FamiliasIdRouteImport.update({
+  id: '/familias/$id',
+  path: '/familias/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FamiliasNovaRoute = FamiliasNovaRouteImport.update({
+  id: '/familias/nova',
+  path: '/familias/nova',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FamiliasIdEditarRoute = FamiliasIdEditarRouteImport.update({
+  id: '/familias/$id_/editar',
+  path: '/familias/$id/editar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/administracao': typeof AdministracaoRoute
+  '/atendimentos': typeof AtendimentosRoute
+  '/aulas': typeof AulasRoute
+  '/demandas': typeof DemandasRoute
+  '/frequencia': typeof FrequenciaRoute
+  '/matriculas': typeof MatriculasRoute
+  '/pessoas': typeof PessoasRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/turmas': typeof TurmasRoute
+  '/familias/$id': typeof FamiliasIdRoute
+  '/familias/nova': typeof FamiliasNovaRoute
+  '/familias/': typeof FamiliasIndexRoute
+  '/familias/$id/editar': typeof FamiliasIdEditarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/administracao': typeof AdministracaoRoute
+  '/atendimentos': typeof AtendimentosRoute
+  '/aulas': typeof AulasRoute
+  '/demandas': typeof DemandasRoute
+  '/frequencia': typeof FrequenciaRoute
+  '/matriculas': typeof MatriculasRoute
+  '/pessoas': typeof PessoasRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/turmas': typeof TurmasRoute
+  '/familias/$id': typeof FamiliasIdRoute
+  '/familias/nova': typeof FamiliasNovaRoute
+  '/familias': typeof FamiliasIndexRoute
+  '/familias/$id/editar': typeof FamiliasIdEditarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/administracao': typeof AdministracaoRoute
+  '/atendimentos': typeof AtendimentosRoute
+  '/aulas': typeof AulasRoute
+  '/demandas': typeof DemandasRoute
+  '/frequencia': typeof FrequenciaRoute
+  '/matriculas': typeof MatriculasRoute
+  '/pessoas': typeof PessoasRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/turmas': typeof TurmasRoute
+  '/familias/$id': typeof FamiliasIdRoute
+  '/familias/nova': typeof FamiliasNovaRoute
+  '/familias/': typeof FamiliasIndexRoute
+  '/familias/$id_/editar': typeof FamiliasIdEditarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/administracao'
+    | '/atendimentos'
+    | '/aulas'
+    | '/demandas'
+    | '/frequencia'
+    | '/matriculas'
+    | '/pessoas'
+    | '/relatorios'
+    | '/turmas'
+    | '/familias/$id'
+    | '/familias/nova'
+    | '/familias/'
+    | '/familias/$id/editar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/administracao'
+    | '/atendimentos'
+    | '/aulas'
+    | '/demandas'
+    | '/frequencia'
+    | '/matriculas'
+    | '/pessoas'
+    | '/relatorios'
+    | '/turmas'
+    | '/familias/$id'
+    | '/familias/nova'
+    | '/familias'
+    | '/familias/$id/editar'
+  id:
+    | '__root__'
+    | '/'
+    | '/administracao'
+    | '/atendimentos'
+    | '/aulas'
+    | '/demandas'
+    | '/frequencia'
+    | '/matriculas'
+    | '/pessoas'
+    | '/relatorios'
+    | '/turmas'
+    | '/familias/$id'
+    | '/familias/nova'
+    | '/familias/'
+    | '/familias/$id_/editar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdministracaoRoute: typeof AdministracaoRoute
+  AtendimentosRoute: typeof AtendimentosRoute
+  AulasRoute: typeof AulasRoute
+  DemandasRoute: typeof DemandasRoute
+  FrequenciaRoute: typeof FrequenciaRoute
+  MatriculasRoute: typeof MatriculasRoute
+  PessoasRoute: typeof PessoasRoute
+  RelatoriosRoute: typeof RelatoriosRoute
+  TurmasRoute: typeof TurmasRoute
+  FamiliasIdRoute: typeof FamiliasIdRoute
+  FamiliasNovaRoute: typeof FamiliasNovaRoute
+  FamiliasIndexRoute: typeof FamiliasIndexRoute
+  FamiliasIdEditarRoute: typeof FamiliasIdEditarRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +221,115 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/administracao': {
+      id: '/administracao'
+      path: '/administracao'
+      fullPath: '/administracao'
+      preLoaderRoute: typeof AdministracaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/atendimentos': {
+      id: '/atendimentos'
+      path: '/atendimentos'
+      fullPath: '/atendimentos'
+      preLoaderRoute: typeof AtendimentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aulas': {
+      id: '/aulas'
+      path: '/aulas'
+      fullPath: '/aulas'
+      preLoaderRoute: typeof AulasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demandas': {
+      id: '/demandas'
+      path: '/demandas'
+      fullPath: '/demandas'
+      preLoaderRoute: typeof DemandasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/frequencia': {
+      id: '/frequencia'
+      path: '/frequencia'
+      fullPath: '/frequencia'
+      preLoaderRoute: typeof FrequenciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/matriculas': {
+      id: '/matriculas'
+      path: '/matriculas'
+      fullPath: '/matriculas'
+      preLoaderRoute: typeof MatriculasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pessoas': {
+      id: '/pessoas'
+      path: '/pessoas'
+      fullPath: '/pessoas'
+      preLoaderRoute: typeof PessoasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios': {
+      id: '/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof RelatoriosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/turmas': {
+      id: '/turmas'
+      path: '/turmas'
+      fullPath: '/turmas'
+      preLoaderRoute: typeof TurmasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/familias/': {
+      id: '/familias/'
+      path: '/familias'
+      fullPath: '/familias/'
+      preLoaderRoute: typeof FamiliasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/familias/$id': {
+      id: '/familias/$id'
+      path: '/familias/$id'
+      fullPath: '/familias/$id'
+      preLoaderRoute: typeof FamiliasIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/familias/nova': {
+      id: '/familias/nova'
+      path: '/familias/nova'
+      fullPath: '/familias/nova'
+      preLoaderRoute: typeof FamiliasNovaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/familias/$id_/editar': {
+      id: '/familias/$id_/editar'
+      path: '/familias/$id/editar'
+      fullPath: '/familias/$id/editar'
+      preLoaderRoute: typeof FamiliasIdEditarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdministracaoRoute: AdministracaoRoute,
+  AtendimentosRoute: AtendimentosRoute,
+  AulasRoute: AulasRoute,
+  DemandasRoute: DemandasRoute,
+  FrequenciaRoute: FrequenciaRoute,
+  MatriculasRoute: MatriculasRoute,
+  PessoasRoute: PessoasRoute,
+  RelatoriosRoute: RelatoriosRoute,
+  TurmasRoute: TurmasRoute,
+  FamiliasIdRoute: FamiliasIdRoute,
+  FamiliasNovaRoute: FamiliasNovaRoute,
+  FamiliasIndexRoute: FamiliasIndexRoute,
+  FamiliasIdEditarRoute: FamiliasIdEditarRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
