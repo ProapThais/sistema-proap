@@ -10,7 +10,7 @@ export function FamiliaForm({ inicial }: { inicial?: Familia }) {
     responsavel: inicial?.responsavel ?? "", telefone: inicial?.telefone ?? "", bairro: inicial?.bairro ?? "",
     status: inicial?.status ?? "Ativa", observacoes: inicial?.observacoes ?? "",
   });
-  const [erros, setErros] = useState<Record<string, string>>({});
+  const [erros, setErros] = useState<{ responsavel?: string; bairro?: string }>({});
   const [confirmado, setConfirmado] = useState(false);
   const [salvo, setSalvo] = useState(false);
   const dup = possiveisDuplicadas(f, inicial?.id);
@@ -18,7 +18,7 @@ export function FamiliaForm({ inicial }: { inicial?: Familia }) {
 
   function salvar(e: React.FormEvent) {
     e.preventDefault();
-    const er: Record<string, string> = {};
+    const er: { responsavel?: string; bairro?: string } = {};
     if (f.responsavel.trim().length < 3) er.responsavel = "Informe o nome do responsável (mínimo 3 letras).";
     if (!f.bairro.trim()) er.bairro = "Informe o bairro.";
     setErros(er);

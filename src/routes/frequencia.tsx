@@ -13,7 +13,7 @@ export const Route = createFileRoute("/frequencia")({
 const opcoes: Presenca[] = ["Presente", "Falta", "Falta justificada"];
 
 function Frequencia() {
-  const [turmaId, setTurmaId] = useState(repo.turmas()[0].id);
+  const [turmaId, setTurmaId] = useState(repo.turmas()[0]?.id ?? "");
   const [data, setData] = useState("2026-10-16");
   const [cancelada, setCancelada] = useState(false);
   const [marc, setMarc] = useState<Record<string, Presenca>>({});
