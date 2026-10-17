@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Card, DemoNotice, PageHeader, Stat, Badge, statusTone, pageHead, btnClass } from "@/components/ui-kit";
 import { repo, dataBR } from "@/data/repository";
+import { Home, Users, ClipboardList, GraduationCap, Plus } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => pageHead("Painel inicial", "Visão geral ilustrativa do acompanhamento social e educacional."),
@@ -14,13 +15,13 @@ function Painel() {
   return (
     <>
       <PageHeader title="Painel inicial" description="Visão geral do acompanhamento social e educacional."
-        actions={<Link to="/familias/nova" className={btnClass()}>Cadastrar família</Link>} />
+        actions={<Link to="/familias/nova" className={btnClass()}><Plus className="h-4 w-4" aria-hidden />Cadastrar família</Link>} />
       <DemoNotice />
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <Stat label="Famílias (demo)" value={familias.length} note={`${familias.filter((f) => f.status !== "Inativa").length} ativas`} />
-        <Stat label="Integrantes (demo)" value={repo.pessoas().length} />
-        <Stat label="Demandas em aberto (demo)" value={abertas.length} />
-        <Stat label="Matrículas ativas (demo)" value={repo.matriculas().filter((m) => m.status === "Ativa").length} />
+        <Stat label="Famílias (demo)" icon={Home} tone="info" value={familias.length} note={`${familias.filter((f) => f.status !== "Inativa").length} ativas`} />
+        <Stat label="Integrantes (demo)" icon={Users} tone="success" value={repo.pessoas().length} />
+        <Stat label="Demandas em aberto (demo)" icon={ClipboardList} tone="accent" value={abertas.length} />
+        <Stat label="Matrículas ativas (demo)" icon={GraduationCap} tone="primary" value={repo.matriculas().filter((m) => m.status === "Ativa").length} />
       </div>
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <Card>

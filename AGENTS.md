@@ -11,4 +11,5 @@
 
 - Pages read data only through `src/data/repository.ts`; demo data lives in `src/data/demo.ts`. Why: swap to a real database later without touching pages.
 - Shared UI primitives live in `src/components/ui-kit.tsx`, app layout in `src/components/AppShell.tsx` (rendered from `__root`). Why: consistent design tokens.
+- Global visual identity and semantic status/age colors live in `src/styles.css`; shared controls consume those tokens. Why: visual updates remain consistent without changing domain behavior.
 - No auth or persistence yet; forms only simulate saving. Why: current phase is navigable interface only.
