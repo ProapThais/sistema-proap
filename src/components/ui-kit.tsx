@@ -1,11 +1,12 @@
 import type { ReactNode, InputHTMLAttributes, SelectHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
+import { Info, ArrowUpRight, type LucideIcon } from "lucide-react";
 
 export function PageHeader({ title, description, actions }: { title: string; description?: string; actions?: ReactNode }) {
   return (
-    <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div className="mb-7 flex flex-col gap-4 border-b pb-6 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <h1 className="text-2xl font-semibold sm:text-3xl">{title}</h1>
+        <h1 className="text-2xl font-bold sm:text-3xl">{title}</h1>
         {description && <p className="mt-1 text-sm text-muted-foreground">{description}</p>}
       </div>
       {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
@@ -14,7 +15,7 @@ export function PageHeader({ title, description, actions }: { title: string; des
 }
 
 export function Card({ children, className }: { children: ReactNode; className?: string }) {
-  return <section className={cn("rounded-xl border bg-card p-5 shadow-sm", className)}>{children}</section>;
+  return <section className={cn("rounded-lg border bg-card p-5 shadow-(--shadow-panel)", className)}>{children}</section>;
 }
 
 const tones = {
@@ -43,15 +44,15 @@ export function Btn({ variant = "primary", className, ...p }: React.ButtonHTMLAt
   return <button {...p} className={cn(btnClass(variant), className)} />;
 }
 export function btnClass(variant: "primary" | "outline" | "ghost" = "primary") {
-  const base = "inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors disabled:opacity-50";
+  const base = "inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50";
   return cn(base, {
-    primary: "bg-primary text-primary-foreground hover:bg-primary/90",
+    primary: "bg-action text-action-foreground hover:bg-action/85",
     outline: "border border-input bg-card text-foreground hover:bg-muted",
     ghost: "text-foreground hover:bg-muted",
   }[variant]);
 }
 
-const inputCls = "w-full rounded-lg border border-input bg-card px-3 py-2 text-sm placeholder:text-muted-foreground focus:border-ring";
+const inputCls = "w-full min-h-11 rounded-md border border-input bg-card px-3 py-2 text-sm placeholder:text-muted-foreground focus:border-ring transition-colors";
 export function Field({ label, id, required, hint, children }: { label: string; id: string; required?: boolean; hint?: string; children: ReactNode }) {
   return (
     <div className="space-y-1.5">
@@ -69,10 +70,10 @@ export function Select(p: SelectHTMLAttributes<HTMLSelectElement>) { return <sel
 
 export function Table({ head, children }: { head: string[]; children: ReactNode }) {
   return (
-    <div className="overflow-x-auto rounded-xl border bg-card">
+    <div className="overflow-x-auto rounded-lg border bg-card shadow-(--shadow-panel)">
       <table className="w-full text-sm">
         <thead className="bg-muted/70 text-left text-xs uppercase tracking-wide text-muted-foreground">
-          <tr>{head.map((h) => <th key={h} scope="col" className="px-4 py-3 font-semibold">{h}</th>)}</tr>
+          <tr>{head.map((h) => <th key={h} scope="col" className="px-4 py-3.5 font-semibold">{h}</th>)}</tr>
         </thead>
         <tbody className="divide-y">{children}</tbody>
       </table>
@@ -81,11 +82,14 @@ export function Table({ head, children }: { head: string[]; children: ReactNode 
 }
 export const td = "px-4 py-3 align-middle";
 
-export function Stat({ label, value, note }: { label: string; value: string | number; note?: string }) {
+export function Stat({ label, value, note, icon: Icon = ArrowUpRight, tone = "primary" }: { label: string; value: string | number; note?: string; icon?: LucideIcon; tone?: Tone }) {
   return (
     <Card>
-      <p className="text-sm text-muted-foreground">{label}</p>
-      <p className="mt-2 font-display text-3xl font-semibold text-primary">{value}</p>
+      <div className="flex items-start justify-between gap-2">
+        <p className="pt-1 text-sm font-medium text-muted-foreground">{label}</p>
+        <span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-md", tones[tone])}><Icon className="h-4 w-4" aria-hidden /></span>
+      </div>
+      <p className="mt-3 font-display text-4xl font-bold text-primary">{value}</p>
       {note && <p className="mt-1 text-xs text-muted-foreground">{note}</p>}
     </Card>
   );
@@ -93,8 +97,8 @@ export function Stat({ label, value, note }: { label: string; value: string | nu
 
 export function DemoNotice({ children }: { children?: ReactNode }) {
   return (
-    <p role="note" className="mb-5 rounded-lg border border-warning/60 bg-warning/15 px-4 py-2.5 text-sm text-warning-foreground">
-      <strong>Demonstração:</strong> {children ?? "valores ilustrativos gerados a partir de dados fictícios. Não representam resultados reais da PROAP."}
+    <p role="note" className="mb-6 flex items-start gap-2.5 rounded-md border border-info/20 bg-info/5 px-4 py-3 text-sm text-info">
+      <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden /><span><strong>Demonstração:</strong> {children ?? "valores ilustrativos gerados a partir de dados fictícios. Não representam resultados reais da PROAP."}</span>
     </p>
   );
 }

@@ -6,7 +6,7 @@
 
 @theme inline {
   --font-sans: "Figtree", system-ui, sans-serif;
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Figtree", system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -38,37 +38,50 @@
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-muted: var(--sidebar-muted);
+  --color-action: var(--action);
+  --color-action-foreground: var(--action-foreground);
+  --color-age-child: var(--age-child);
+  --color-age-teen: var(--age-teen);
+  --color-age-adult: var(--age-adult);
+  --color-age-senior: var(--age-senior);
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.975 0.008 85);
-  --foreground: oklch(0.26 0.03 200);
-  --card: oklch(0.995 0.004 85);
-  --card-foreground: oklch(0.26 0.03 200);
-  --primary: oklch(0.46 0.08 190);
-  --primary-foreground: oklch(0.98 0.01 85);
-  --secondary: oklch(0.93 0.025 80);
-  --secondary-foreground: oklch(0.3 0.04 60);
-  --muted: oklch(0.945 0.012 85);
-  --muted-foreground: oklch(0.5 0.025 200);
-  --accent: oklch(0.68 0.13 45);
-  --accent-foreground: oklch(0.99 0.01 85);
-  --destructive: oklch(0.55 0.19 27);
-  --destructive-foreground: oklch(0.98 0.01 85);
-  --success: oklch(0.55 0.12 150);
-  --success-foreground: oklch(0.98 0.01 150);
-  --warning: oklch(0.78 0.14 80);
-  --warning-foreground: oklch(0.3 0.06 70);
-  --info: oklch(0.55 0.1 240);
-  --info-foreground: oklch(0.98 0.01 240);
-  --border: oklch(0.89 0.015 85);
-  --input: oklch(0.86 0.02 85);
-  --ring: oklch(0.55 0.1 190);
-  --sidebar: oklch(0.3 0.05 195);
-  --sidebar-foreground: oklch(0.95 0.015 85);
-  --sidebar-accent: oklch(0.38 0.06 195);
-  --sidebar-muted: oklch(0.75 0.03 190);
+  --radius: 0.5rem;
+  --background: oklch(0.981 0.003 255);
+  --foreground: oklch(0.205 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --primary: oklch(0.292 0.066 260);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.951 0.012 255);
+  --secondary-foreground: var(--primary);
+  --muted: oklch(0.959 0.005 255);
+  --muted-foreground: oklch(0.48 0.021 255);
+  --action: oklch(0.739 0.161 59);
+  --action-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.54 0.137 53);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.52 0.19 27);
+  --destructive-foreground: oklch(1 0 0);
+  --success: oklch(0.46 0.11 153);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.81 0.125 80);
+  --warning-foreground: oklch(0.38 0.07 64);
+  --info: oklch(0.48 0.13 250);
+  --info-foreground: oklch(1 0 0);
+  --border: oklch(0.913 0.008 255);
+  --input: oklch(0.828 0.013 255);
+  --ring: var(--action);
+  --sidebar: var(--primary);
+  --sidebar-foreground: oklch(0.985 0.002 255);
+  --sidebar-accent: oklch(0.366 0.063 260);
+  --sidebar-muted: oklch(0.768 0.024 255);
+  --age-child: var(--info);
+  --age-teen: var(--accent);
+  --age-adult: var(--success);
+  --age-senior: oklch(0.49 0.16 305);
+  --shadow-panel: 0 2px 8px oklch(0.292 0.066 260 / 0.035);
 }
 
 @layer base {
@@ -78,6 +91,22 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }
-  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0; color: var(--primary); }
   :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+  button, input, select, textarea { font: inherit; }
+  button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+  button:not(:disabled), select { cursor: pointer; }
+  input, select, textarea { min-height: 42px; }
+  textarea { resize: vertical; }
+  th { white-space: nowrap; }
+  td { line-height: 1.5; }
+  tbody tr { transition: background-color 140ms ease; }
+  tbody tr:hover { background: var(--muted); }
+  [role="tablist"] { gap: 0.25rem; border-color: var(--border); }
+  [role="tab"] { min-height: 44px; border-radius: 6px 6px 0 0; }
+  [role="tab"][aria-selected="true"] { color: var(--primary); border-color: var(--action); background: var(--secondary); }
+  [role="tabpanel"] { min-width: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
 }
