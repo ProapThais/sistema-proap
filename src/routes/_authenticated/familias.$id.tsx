@@ -5,7 +5,7 @@ import { repo, dataBR, idade } from "@/data/repository";
 import * as demo from "@/data/demo";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/familias/$id")({
+export const Route = createFileRoute("/_authenticated/familias/$id")({
   loader: ({ params }) => {
     const familia = repo.familia(params.id);
     if (!familia) throw notFound();

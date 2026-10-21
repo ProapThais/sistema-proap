@@ -3,7 +3,7 @@ import { PageHeader, pageHead } from "@/components/ui-kit";
 import { FamiliaForm } from "@/components/FamiliaForm";
 import { repo } from "@/data/repository";
 
-export const Route = createFileRoute("/familias/$id_/editar")({
+export const Route = createFileRoute("/_authenticated/familias/$id_/editar")({
   loader: ({ params }) => {
     const familia = repo.familia(params.id);
     if (!familia) throw notFound();

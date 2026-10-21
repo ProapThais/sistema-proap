@@ -4,15 +4,17 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useNavigate,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AppShell } from "@/components/AppShell";
+import { supabase } from "@/integrations/supabase/client";
 
 function NotFoundComponent() {
   return (
@@ -114,10 +116,33 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  const navigate = useNavigate();
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+
+  // Único observador de sessão do aplicativo: atualiza a identidade exibida e
+  // invalida a navegação apenas em mudanças reais de identidade.
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => setUserEmail(data.user?.email ?? null));
+    const { data: sub } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+      setUserEmail(session?.user?.email ?? null);
+      router.invalidate();
+      if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
+    });
+    return () => sub.subscription.unsubscribe();
+  }, [router, queryClient]);
+
+  async function aoSair() {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/entrar", replace: true });
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AppShell>
+      <AppShell userEmail={userEmail} onSignOut={aoSair}>
         <Outlet />
       </AppShell>
     </QueryClientProvider>

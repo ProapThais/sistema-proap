@@ -3,7 +3,7 @@ import { useState } from "react";
 import { PageHeader, Table, td, SearchInput, Select, Empty, pageHead, DemoNotice } from "@/components/ui-kit";
 import { repo, normalizar, idade } from "@/data/repository";
 
-export const Route = createFileRoute("/pessoas")({
+export const Route = createFileRoute("/_authenticated/pessoas")({
   head: () => pageHead("Pessoas e integrantes", "Pessoas vinculadas às famílias (dados fictícios)."),
   component: Pessoas,
 });

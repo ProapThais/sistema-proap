@@ -9,145 +9,176 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AdministracaoRouteImport } from './routes/administracao'
-import { Route as AtendimentosRouteImport } from './routes/atendimentos'
-import { Route as AulasRouteImport } from './routes/aulas'
-import { Route as DemandasRouteImport } from './routes/demandas'
-import { Route as FrequenciaRouteImport } from './routes/frequencia'
-import { Route as MatriculasRouteImport } from './routes/matriculas'
-import { Route as PessoasRouteImport } from './routes/pessoas'
-import { Route as RelatoriosRouteImport } from './routes/relatorios'
-import { Route as TurmasRouteImport } from './routes/turmas'
-import { Route as FamiliasIndexRouteImport } from './routes/familias.index'
-import { Route as FamiliasIdRouteImport } from './routes/familias.$id'
-import { Route as FamiliasNovaRouteImport } from './routes/familias.nova'
-import { Route as FamiliasIdEditarRouteImport } from './routes/familias.$id_.editar'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as EntrarRouteImport } from './routes/entrar'
+import { Route as RecuperarSenhaRouteImport } from './routes/recuperar-senha'
+import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedAdministracaoRouteImport } from './routes/_authenticated/administracao'
+import { Route as AuthenticatedAtendimentosRouteImport } from './routes/_authenticated/atendimentos'
+import { Route as AuthenticatedAulasRouteImport } from './routes/_authenticated/aulas'
+import { Route as AuthenticatedDemandasRouteImport } from './routes/_authenticated/demandas'
+import { Route as AuthenticatedFrequenciaRouteImport } from './routes/_authenticated/frequencia'
+import { Route as AuthenticatedMatriculasRouteImport } from './routes/_authenticated/matriculas'
+import { Route as AuthenticatedPessoasRouteImport } from './routes/_authenticated/pessoas'
+import { Route as AuthenticatedRelatoriosRouteImport } from './routes/_authenticated/relatorios'
+import { Route as AuthenticatedTurmasRouteImport } from './routes/_authenticated/turmas'
+import { Route as AuthenticatedFamiliasIndexRouteImport } from './routes/_authenticated/familias.index'
+import { Route as AuthenticatedFamiliasIdRouteImport } from './routes/_authenticated/familias.$id'
+import { Route as AuthenticatedFamiliasNovaRouteImport } from './routes/_authenticated/familias.nova'
+import { Route as AuthenticatedFamiliasIdEditarRouteImport } from './routes/_authenticated/familias.$id_.editar'
 
-const IndexRoute = IndexRouteImport.update({
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrarRoute = EntrarRouteImport.update({
+  id: '/entrar',
+  path: '/entrar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecuperarSenhaRoute = RecuperarSenhaRouteImport.update({
+  id: '/recuperar-senha',
+  path: '/recuperar-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const AdministracaoRoute = AdministracaoRouteImport.update({
-  id: '/administracao',
-  path: '/administracao',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AtendimentosRoute = AtendimentosRouteImport.update({
-  id: '/atendimentos',
-  path: '/atendimentos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AulasRoute = AulasRouteImport.update({
+const AuthenticatedAdministracaoRoute =
+  AuthenticatedAdministracaoRouteImport.update({
+    id: '/administracao',
+    path: '/administracao',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAtendimentosRoute =
+  AuthenticatedAtendimentosRouteImport.update({
+    id: '/atendimentos',
+    path: '/atendimentos',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAulasRoute = AuthenticatedAulasRouteImport.update({
   id: '/aulas',
   path: '/aulas',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const DemandasRoute = DemandasRouteImport.update({
+const AuthenticatedDemandasRoute = AuthenticatedDemandasRouteImport.update({
   id: '/demandas',
   path: '/demandas',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const FrequenciaRoute = FrequenciaRouteImport.update({
+const AuthenticatedFrequenciaRoute = AuthenticatedFrequenciaRouteImport.update({
   id: '/frequencia',
   path: '/frequencia',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const MatriculasRoute = MatriculasRouteImport.update({
+const AuthenticatedMatriculasRoute = AuthenticatedMatriculasRouteImport.update({
   id: '/matriculas',
   path: '/matriculas',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const PessoasRoute = PessoasRouteImport.update({
+const AuthenticatedPessoasRoute = AuthenticatedPessoasRouteImport.update({
   id: '/pessoas',
   path: '/pessoas',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const RelatoriosRoute = RelatoriosRouteImport.update({
+const AuthenticatedRelatoriosRoute = AuthenticatedRelatoriosRouteImport.update({
   id: '/relatorios',
   path: '/relatorios',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const TurmasRoute = TurmasRouteImport.update({
+const AuthenticatedTurmasRoute = AuthenticatedTurmasRouteImport.update({
   id: '/turmas',
   path: '/turmas',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const FamiliasIndexRoute = FamiliasIndexRouteImport.update({
-  id: '/familias/',
-  path: '/familias/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FamiliasIdRoute = FamiliasIdRouteImport.update({
+const AuthenticatedFamiliasIndexRoute =
+  AuthenticatedFamiliasIndexRouteImport.update({
+    id: '/familias/',
+    path: '/familias/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFamiliasIdRoute = AuthenticatedFamiliasIdRouteImport.update({
   id: '/familias/$id',
   path: '/familias/$id',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const FamiliasNovaRoute = FamiliasNovaRouteImport.update({
-  id: '/familias/nova',
-  path: '/familias/nova',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FamiliasIdEditarRoute = FamiliasIdEditarRouteImport.update({
-  id: '/familias/$id_/editar',
-  path: '/familias/$id/editar',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const AuthenticatedFamiliasNovaRoute =
+  AuthenticatedFamiliasNovaRouteImport.update({
+    id: '/familias/nova',
+    path: '/familias/nova',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFamiliasIdEditarRoute =
+  AuthenticatedFamiliasIdEditarRouteImport.update({
+    id: '/familias/$id_/editar',
+    path: '/familias/$id/editar',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/administracao': typeof AdministracaoRoute
-  '/atendimentos': typeof AtendimentosRoute
-  '/aulas': typeof AulasRoute
-  '/demandas': typeof DemandasRoute
-  '/frequencia': typeof FrequenciaRoute
-  '/matriculas': typeof MatriculasRoute
-  '/pessoas': typeof PessoasRoute
-  '/relatorios': typeof RelatoriosRoute
-  '/turmas': typeof TurmasRoute
-  '/familias/$id': typeof FamiliasIdRoute
-  '/familias/nova': typeof FamiliasNovaRoute
-  '/familias/': typeof FamiliasIndexRoute
-  '/familias/$id/editar': typeof FamiliasIdEditarRoute
+  '/': typeof AuthenticatedIndexRoute
+  '/entrar': typeof EntrarRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/administracao': typeof AuthenticatedAdministracaoRoute
+  '/atendimentos': typeof AuthenticatedAtendimentosRoute
+  '/aulas': typeof AuthenticatedAulasRoute
+  '/demandas': typeof AuthenticatedDemandasRoute
+  '/frequencia': typeof AuthenticatedFrequenciaRoute
+  '/matriculas': typeof AuthenticatedMatriculasRoute
+  '/pessoas': typeof AuthenticatedPessoasRoute
+  '/relatorios': typeof AuthenticatedRelatoriosRoute
+  '/turmas': typeof AuthenticatedTurmasRoute
+  '/familias/$id': typeof AuthenticatedFamiliasIdRoute
+  '/familias/nova': typeof AuthenticatedFamiliasNovaRoute
+  '/familias/': typeof AuthenticatedFamiliasIndexRoute
+  '/familias/$id/editar': typeof AuthenticatedFamiliasIdEditarRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/administracao': typeof AdministracaoRoute
-  '/atendimentos': typeof AtendimentosRoute
-  '/aulas': typeof AulasRoute
-  '/demandas': typeof DemandasRoute
-  '/frequencia': typeof FrequenciaRoute
-  '/matriculas': typeof MatriculasRoute
-  '/pessoas': typeof PessoasRoute
-  '/relatorios': typeof RelatoriosRoute
-  '/turmas': typeof TurmasRoute
-  '/familias/$id': typeof FamiliasIdRoute
-  '/familias/nova': typeof FamiliasNovaRoute
-  '/familias': typeof FamiliasIndexRoute
-  '/familias/$id/editar': typeof FamiliasIdEditarRoute
+  '/entrar': typeof EntrarRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/administracao': typeof AuthenticatedAdministracaoRoute
+  '/atendimentos': typeof AuthenticatedAtendimentosRoute
+  '/aulas': typeof AuthenticatedAulasRoute
+  '/demandas': typeof AuthenticatedDemandasRoute
+  '/frequencia': typeof AuthenticatedFrequenciaRoute
+  '/matriculas': typeof AuthenticatedMatriculasRoute
+  '/pessoas': typeof AuthenticatedPessoasRoute
+  '/relatorios': typeof AuthenticatedRelatoriosRoute
+  '/turmas': typeof AuthenticatedTurmasRoute
+  '/': typeof AuthenticatedIndexRoute
+  '/familias/$id': typeof AuthenticatedFamiliasIdRoute
+  '/familias/nova': typeof AuthenticatedFamiliasNovaRoute
+  '/familias': typeof AuthenticatedFamiliasIndexRoute
+  '/familias/$id/editar': typeof AuthenticatedFamiliasIdEditarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/administracao': typeof AdministracaoRoute
-  '/atendimentos': typeof AtendimentosRoute
-  '/aulas': typeof AulasRoute
-  '/demandas': typeof DemandasRoute
-  '/frequencia': typeof FrequenciaRoute
-  '/matriculas': typeof MatriculasRoute
-  '/pessoas': typeof PessoasRoute
-  '/relatorios': typeof RelatoriosRoute
-  '/turmas': typeof TurmasRoute
-  '/familias/$id': typeof FamiliasIdRoute
-  '/familias/nova': typeof FamiliasNovaRoute
-  '/familias/': typeof FamiliasIndexRoute
-  '/familias/$id_/editar': typeof FamiliasIdEditarRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/entrar': typeof EntrarRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/_authenticated/administracao': typeof AuthenticatedAdministracaoRoute
+  '/_authenticated/atendimentos': typeof AuthenticatedAtendimentosRoute
+  '/_authenticated/aulas': typeof AuthenticatedAulasRoute
+  '/_authenticated/demandas': typeof AuthenticatedDemandasRoute
+  '/_authenticated/frequencia': typeof AuthenticatedFrequenciaRoute
+  '/_authenticated/matriculas': typeof AuthenticatedMatriculasRoute
+  '/_authenticated/pessoas': typeof AuthenticatedPessoasRoute
+  '/_authenticated/relatorios': typeof AuthenticatedRelatoriosRoute
+  '/_authenticated/turmas': typeof AuthenticatedTurmasRoute
+  '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/familias/$id': typeof AuthenticatedFamiliasIdRoute
+  '/_authenticated/familias/nova': typeof AuthenticatedFamiliasNovaRoute
+  '/_authenticated/familias/': typeof AuthenticatedFamiliasIndexRoute
+  '/_authenticated/familias/$id_/editar': typeof AuthenticatedFamiliasIdEditarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/entrar'
+    | '/recuperar-senha'
     | '/administracao'
     | '/atendimentos'
     | '/aulas'
@@ -163,7 +194,8 @@ export interface FileRouteTypes {
     | '/familias/$id/editar'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
+    | '/entrar'
+    | '/recuperar-senha'
     | '/administracao'
     | '/atendimentos'
     | '/aulas'
@@ -173,163 +205,203 @@ export interface FileRouteTypes {
     | '/pessoas'
     | '/relatorios'
     | '/turmas'
+    | '/'
     | '/familias/$id'
     | '/familias/nova'
     | '/familias'
     | '/familias/$id/editar'
   id:
     | '__root__'
-    | '/'
-    | '/administracao'
-    | '/atendimentos'
-    | '/aulas'
-    | '/demandas'
-    | '/frequencia'
-    | '/matriculas'
-    | '/pessoas'
-    | '/relatorios'
-    | '/turmas'
-    | '/familias/$id'
-    | '/familias/nova'
-    | '/familias/'
-    | '/familias/$id_/editar'
+    | '/_authenticated'
+    | '/entrar'
+    | '/recuperar-senha'
+    | '/_authenticated/administracao'
+    | '/_authenticated/atendimentos'
+    | '/_authenticated/aulas'
+    | '/_authenticated/demandas'
+    | '/_authenticated/frequencia'
+    | '/_authenticated/matriculas'
+    | '/_authenticated/pessoas'
+    | '/_authenticated/relatorios'
+    | '/_authenticated/turmas'
+    | '/_authenticated/'
+    | '/_authenticated/familias/$id'
+    | '/_authenticated/familias/nova'
+    | '/_authenticated/familias/'
+    | '/_authenticated/familias/$id_/editar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AdministracaoRoute: typeof AdministracaoRoute
-  AtendimentosRoute: typeof AtendimentosRoute
-  AulasRoute: typeof AulasRoute
-  DemandasRoute: typeof DemandasRoute
-  FrequenciaRoute: typeof FrequenciaRoute
-  MatriculasRoute: typeof MatriculasRoute
-  PessoasRoute: typeof PessoasRoute
-  RelatoriosRoute: typeof RelatoriosRoute
-  TurmasRoute: typeof TurmasRoute
-  FamiliasIdRoute: typeof FamiliasIdRoute
-  FamiliasNovaRoute: typeof FamiliasNovaRoute
-  FamiliasIndexRoute: typeof FamiliasIndexRoute
-  FamiliasIdEditarRoute: typeof FamiliasIdEditarRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  EntrarRoute: typeof EntrarRoute
+  RecuperarSenhaRoute: typeof RecuperarSenhaRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entrar': {
+      id: '/entrar'
+      path: '/entrar'
+      fullPath: '/entrar'
+      preLoaderRoute: typeof EntrarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recuperar-senha': {
+      id: '/recuperar-senha'
+      path: '/recuperar-senha'
+      fullPath: '/recuperar-senha'
+      preLoaderRoute: typeof RecuperarSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/': {
+      id: '/_authenticated/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/administracao': {
-      id: '/administracao'
+    '/_authenticated/administracao': {
+      id: '/_authenticated/administracao'
       path: '/administracao'
       fullPath: '/administracao'
-      preLoaderRoute: typeof AdministracaoRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedAdministracaoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/atendimentos': {
-      id: '/atendimentos'
+    '/_authenticated/atendimentos': {
+      id: '/_authenticated/atendimentos'
       path: '/atendimentos'
       fullPath: '/atendimentos'
-      preLoaderRoute: typeof AtendimentosRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedAtendimentosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/aulas': {
-      id: '/aulas'
+    '/_authenticated/aulas': {
+      id: '/_authenticated/aulas'
       path: '/aulas'
       fullPath: '/aulas'
-      preLoaderRoute: typeof AulasRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedAulasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/demandas': {
-      id: '/demandas'
+    '/_authenticated/demandas': {
+      id: '/_authenticated/demandas'
       path: '/demandas'
       fullPath: '/demandas'
-      preLoaderRoute: typeof DemandasRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedDemandasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/frequencia': {
-      id: '/frequencia'
+    '/_authenticated/frequencia': {
+      id: '/_authenticated/frequencia'
       path: '/frequencia'
       fullPath: '/frequencia'
-      preLoaderRoute: typeof FrequenciaRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedFrequenciaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/matriculas': {
-      id: '/matriculas'
+    '/_authenticated/matriculas': {
+      id: '/_authenticated/matriculas'
       path: '/matriculas'
       fullPath: '/matriculas'
-      preLoaderRoute: typeof MatriculasRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedMatriculasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/pessoas': {
-      id: '/pessoas'
+    '/_authenticated/pessoas': {
+      id: '/_authenticated/pessoas'
       path: '/pessoas'
       fullPath: '/pessoas'
-      preLoaderRoute: typeof PessoasRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedPessoasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/relatorios': {
-      id: '/relatorios'
+    '/_authenticated/relatorios': {
+      id: '/_authenticated/relatorios'
       path: '/relatorios'
       fullPath: '/relatorios'
-      preLoaderRoute: typeof RelatoriosRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedRelatoriosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/turmas': {
-      id: '/turmas'
+    '/_authenticated/turmas': {
+      id: '/_authenticated/turmas'
       path: '/turmas'
       fullPath: '/turmas'
-      preLoaderRoute: typeof TurmasRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedTurmasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/familias/': {
-      id: '/familias/'
+    '/_authenticated/familias/': {
+      id: '/_authenticated/familias/'
       path: '/familias'
       fullPath: '/familias/'
-      preLoaderRoute: typeof FamiliasIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedFamiliasIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/familias/$id': {
-      id: '/familias/$id'
+    '/_authenticated/familias/$id': {
+      id: '/_authenticated/familias/$id'
       path: '/familias/$id'
       fullPath: '/familias/$id'
-      preLoaderRoute: typeof FamiliasIdRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedFamiliasIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/familias/nova': {
-      id: '/familias/nova'
+    '/_authenticated/familias/nova': {
+      id: '/_authenticated/familias/nova'
       path: '/familias/nova'
       fullPath: '/familias/nova'
-      preLoaderRoute: typeof FamiliasNovaRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedFamiliasNovaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/familias/$id_/editar': {
-      id: '/familias/$id_/editar'
+    '/_authenticated/familias/$id_/editar': {
+      id: '/_authenticated/familias/$id_/editar'
       path: '/familias/$id/editar'
       fullPath: '/familias/$id/editar'
-      preLoaderRoute: typeof FamiliasIdEditarRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedFamiliasIdEditarRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdministracaoRoute: typeof AuthenticatedAdministracaoRoute
+  AuthenticatedAtendimentosRoute: typeof AuthenticatedAtendimentosRoute
+  AuthenticatedAulasRoute: typeof AuthenticatedAulasRoute
+  AuthenticatedDemandasRoute: typeof AuthenticatedDemandasRoute
+  AuthenticatedFrequenciaRoute: typeof AuthenticatedFrequenciaRoute
+  AuthenticatedMatriculasRoute: typeof AuthenticatedMatriculasRoute
+  AuthenticatedPessoasRoute: typeof AuthenticatedPessoasRoute
+  AuthenticatedRelatoriosRoute: typeof AuthenticatedRelatoriosRoute
+  AuthenticatedTurmasRoute: typeof AuthenticatedTurmasRoute
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedFamiliasIdRoute: typeof AuthenticatedFamiliasIdRoute
+  AuthenticatedFamiliasNovaRoute: typeof AuthenticatedFamiliasNovaRoute
+  AuthenticatedFamiliasIndexRoute: typeof AuthenticatedFamiliasIndexRoute
+  AuthenticatedFamiliasIdEditarRoute: typeof AuthenticatedFamiliasIdEditarRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdministracaoRoute: AuthenticatedAdministracaoRoute,
+  AuthenticatedAtendimentosRoute: AuthenticatedAtendimentosRoute,
+  AuthenticatedAulasRoute: AuthenticatedAulasRoute,
+  AuthenticatedDemandasRoute: AuthenticatedDemandasRoute,
+  AuthenticatedFrequenciaRoute: AuthenticatedFrequenciaRoute,
+  AuthenticatedMatriculasRoute: AuthenticatedMatriculasRoute,
+  AuthenticatedPessoasRoute: AuthenticatedPessoasRoute,
+  AuthenticatedRelatoriosRoute: AuthenticatedRelatoriosRoute,
+  AuthenticatedTurmasRoute: AuthenticatedTurmasRoute,
+  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedFamiliasIdRoute: AuthenticatedFamiliasIdRoute,
+  AuthenticatedFamiliasNovaRoute: AuthenticatedFamiliasNovaRoute,
+  AuthenticatedFamiliasIndexRoute: AuthenticatedFamiliasIndexRoute,
+  AuthenticatedFamiliasIdEditarRoute: AuthenticatedFamiliasIdEditarRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AdministracaoRoute: AdministracaoRoute,
-  AtendimentosRoute: AtendimentosRoute,
-  AulasRoute: AulasRoute,
-  DemandasRoute: DemandasRoute,
-  FrequenciaRoute: FrequenciaRoute,
-  MatriculasRoute: MatriculasRoute,
-  PessoasRoute: PessoasRoute,
-  RelatoriosRoute: RelatoriosRoute,
-  TurmasRoute: TurmasRoute,
-  FamiliasIdRoute: FamiliasIdRoute,
-  FamiliasNovaRoute: FamiliasNovaRoute,
-  FamiliasIndexRoute: FamiliasIndexRoute,
-  FamiliasIdEditarRoute: FamiliasIdEditarRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  EntrarRoute: EntrarRoute,
+  RecuperarSenhaRoute: RecuperarSenhaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

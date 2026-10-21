@@ -2,9 +2,12 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import {
   LayoutDashboard, Home, Users, ClipboardList, History, BookOpen, CalendarDays, GraduationCap,
-  CheckSquare, BarChart3, ShieldCheck, Menu, X, HeartHandshake,
+  CheckSquare, BarChart3, ShieldCheck, Menu, X, HeartHandshake, LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+// Endereços públicos que não exibem o menu interno.
+const ROTAS_PUBLICAS = ["/entrar", "/recuperar-senha"];
 
 const grupos = [
   { titulo: "Geral", itens: [{ to: "/", label: "Painel inicial", icon: LayoutDashboard }] },
@@ -70,15 +73,45 @@ function Marca() {
   );
 }
 
-export function AppShell({ children }: { children: ReactNode }) {
+function Sessao({ userEmail, onSignOut, onNavigate }: { userEmail: string | null; onSignOut: () => void; onNavigate?: () => void }) {
+  return (
+    <div className="space-y-2">
+      {userEmail && (
+        <p className="truncate rounded-lg bg-sidebar-accent px-3 py-2 text-xs text-sidebar-muted" title={userEmail}>
+          Conectado como <span className="font-medium text-sidebar-foreground">{userEmail}</span>
+        </p>
+      )}
+      <button
+        type="button"
+        onClick={() => { onNavigate?.(); onSignOut(); }}
+        className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors hover:bg-sidebar-accent"
+      >
+        <LogOut className="h-4 w-4 shrink-0" aria-hidden />
+        Sair
+      </button>
+    </div>
+  );
+}
+
+export function AppShell({ children, userEmail, onSignOut }: { children: ReactNode; userEmail: string | null; onSignOut: () => void }) {
   const [aberto, setAberto] = useState(false);
+  const path = useRouterState({ select: (s) => s.location.pathname });
+
+  // Telas públicas (entrada e recuperação) não exibem o menu interno.
+  if (ROTAS_PUBLICAS.some((r) => path.startsWith(r))) {
+    return <main id="conteudo" className="min-h-screen px-4 py-6 sm:px-6">{children}</main>;
+  }
+
   return (
     <div className="min-h-screen lg:flex">
       <a href="#conteudo" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:rounded focus:bg-card focus:p-2">Pular para o conteúdo</a>
       <aside className="hidden w-64 shrink-0 flex-col gap-6 bg-sidebar p-4 text-sidebar-foreground lg:sticky lg:top-0 lg:flex lg:h-screen lg:overflow-y-auto">
         <Marca />
         <Nav />
-        <p className="mt-auto rounded-lg bg-sidebar-accent p-3 text-xs text-sidebar-muted">Versão de demonstração. Todos os dados são fictícios.</p>
+        <div className="mt-auto space-y-3">
+          <Sessao userEmail={userEmail} onSignOut={onSignOut} />
+          <p className="rounded-lg bg-sidebar-accent p-3 text-xs text-sidebar-muted">Versão de demonstração. Todos os dados são fictícios.</p>
+        </div>
       </aside>
 
       <header className="sticky top-0 z-30 flex items-center justify-between bg-sidebar px-4 py-3 text-sidebar-foreground lg:hidden">
@@ -90,12 +123,15 @@ export function AppShell({ children }: { children: ReactNode }) {
       {aberto && (
         <div className="fixed inset-0 top-[60px] z-20 overflow-y-auto bg-sidebar p-4 text-sidebar-foreground lg:hidden">
           <Nav onNavigate={() => setAberto(false)} />
+          <div className="mt-5 border-t border-sidebar-accent pt-4">
+            <Sessao userEmail={userEmail} onSignOut={onSignOut} onNavigate={() => setAberto(false)} />
+          </div>
         </div>
       )}
 
       <div className="flex-1 min-w-0">
         <div className="border-b border-warning/50 bg-warning/20 px-4 py-1.5 text-center text-xs font-medium text-warning-foreground">
-          Ambiente de demonstração — dados fictícios, sem banco de dados e sem autenticação real.
+          Ambiente de demonstração — todos os dados são fictícios.
         </div>
         <main id="conteudo" className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:py-8">{children}</main>
       </div>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { PageHeader, Table, td, Badge, statusTone, Select, SearchInput, Empty, pageHead, DemoNotice, Card } from "@/components/ui-kit";
 import { repo, dataBR, normalizar } from "@/data/repository";
 
-export const Route = createFileRoute("/demandas")({
+export const Route = createFileRoute("/_authenticated/demandas")({
   head: () => pageHead("Demandas sociais", "Demandas sociais por categoria e status (demonstração)."),
   component: Demandas,
 });

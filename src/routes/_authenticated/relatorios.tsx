@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Card, DemoNotice, pageHead } from "@/components/ui-kit";
 import { repo } from "@/data/repository";
 
-export const Route = createFileRoute("/relatorios")({
+export const Route = createFileRoute("/_authenticated/relatorios")({
   head: () => pageHead("Relatórios", "Relatórios sociais e educacionais de demonstração."),
   component: Relatorios,
 });
