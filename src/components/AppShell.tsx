@@ -2,9 +2,12 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import {
   LayoutDashboard, Home, Users, ClipboardList, History, BookOpen, CalendarDays, GraduationCap,
-  CheckSquare, BarChart3, ShieldCheck, Menu, X, HeartHandshake,
+  CheckSquare, BarChart3, ShieldCheck, Menu, X, HeartHandshake, LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+// Endereços públicos que não exibem o menu interno.
+const ROTAS_PUBLICAS = ["/entrar", "/recuperar-senha"];
 
 const grupos = [
   { titulo: "Geral", itens: [{ to: "/", label: "Painel inicial", icon: LayoutDashboard }] },
