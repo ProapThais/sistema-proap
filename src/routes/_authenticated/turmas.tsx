@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Table, td, Badge, pageHead } from "@/components/ui-kit";
 import { repo } from "@/data/repository";
 
-export const Route = createFileRoute("/turmas")({
+export const Route = createFileRoute("/_authenticated/turmas")({
   head: () => pageHead("Turmas", "Turmas fixas com professor, dias, horários, local e capacidade."),
   component: () => (
     <>

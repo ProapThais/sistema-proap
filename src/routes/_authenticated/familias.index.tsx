@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { PageHeader, Table, td, Badge, statusTone, SearchInput, Select, Empty, pageHead, btnClass, DemoNotice } from "@/components/ui-kit";
 import { repo, normalizar, dataBR } from "@/data/repository";
 
-export const Route = createFileRoute("/familias/")({
+export const Route = createFileRoute("/_authenticated/familias/")({
   head: () => pageHead("Famílias", "Busca, filtros e listagem das famílias cadastradas (demonstração)."),
   component: Familias,
 });

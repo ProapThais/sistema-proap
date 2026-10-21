@@ -3,7 +3,7 @@ import { useState } from "react";
 import { PageHeader, Table, td, Badge, statusTone, Select, SearchInput, Empty, pageHead, DemoNotice } from "@/components/ui-kit";
 import { repo, dataBR, normalizar } from "@/data/repository";
 
-export const Route = createFileRoute("/matriculas")({
+export const Route = createFileRoute("/_authenticated/matriculas")({
   head: () => pageHead("Matrículas", "Matrículas com status, data de ingresso e responsável legal."),
   component: Matriculas,
 });

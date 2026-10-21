@@ -3,7 +3,7 @@ import { Card, DemoNotice, PageHeader, Stat, Badge, statusTone, pageHead, btnCla
 import { repo, dataBR } from "@/data/repository";
 import { Home, Users, ClipboardList, GraduationCap, Plus } from "lucide-react";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_authenticated/")({
   head: () => pageHead("Painel inicial", "Visão geral ilustrativa do acompanhamento social e educacional."),
   component: Painel,
 });

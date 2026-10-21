@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Table, td, Badge, Card, pageHead } from "@/components/ui-kit";
 import { repo } from "@/data/repository";
 
-export const Route = createFileRoute("/administracao")({
+export const Route = createFileRoute("/_authenticated/administracao")({
   head: () => pageHead("Usuários e perfis", "Administração de usuários e perfis de acesso (demonstração)."),
   component: Admin,
 });

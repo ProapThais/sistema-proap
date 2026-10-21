@@ -5,7 +5,7 @@ import { repo } from "@/data/repository";
 import type { Presenca } from "@/data/types";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/frequencia")({
+export const Route = createFileRoute("/_authenticated/frequencia")({
   head: () => pageHead("Frequência", "Registro de frequência por encontro: presença, falta, falta justificada ou aula cancelada."),
   component: Frequencia,
 });

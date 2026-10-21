@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Card, Badge, pageHead } from "@/components/ui-kit";
 import { repo } from "@/data/repository";
 
-export const Route = createFileRoute("/aulas")({
+export const Route = createFileRoute("/_authenticated/aulas")({
   head: () => pageHead("Aulas e modalidades", "Modalidades educacionais, esportivas e culturais oferecidas (demonstração)."),
   component: () => (
     <>

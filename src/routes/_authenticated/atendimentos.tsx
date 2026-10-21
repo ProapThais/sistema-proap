@@ -3,7 +3,7 @@ import { useState } from "react";
 import { PageHeader, Card, Select, Empty, pageHead, DemoNotice, Badge } from "@/components/ui-kit";
 import { repo, dataBR } from "@/data/repository";
 
-export const Route = createFileRoute("/atendimentos")({
+export const Route = createFileRoute("/_authenticated/atendimentos")({
   head: () => pageHead("Histórico de atendimentos", "Atendimentos em ordem cronológica (dados fictícios)."),
   component: Atendimentos,
 });

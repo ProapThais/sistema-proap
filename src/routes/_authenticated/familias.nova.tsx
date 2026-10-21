@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, pageHead } from "@/components/ui-kit";
 import { FamiliaForm } from "@/components/FamiliaForm";
 
-export const Route = createFileRoute("/familias/nova")({
+export const Route = createFileRoute("/_authenticated/familias/nova")({
   head: () => pageHead("Cadastrar família", "Formulário de cadastro de família com verificação de duplicidade."),
   component: () => (
     <>
