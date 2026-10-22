@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { HeartHandshake } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -12,14 +12,17 @@ function destinoSeguro(valor: unknown): string {
 }
 
 export const Route = createFileRoute("/entrar")({
-  validateSearch: (search: Record<string, unknown>) => ({ redirect: destinoSeguro(search.redirect) }),
+  validateSearch: (search: Record<string, unknown>): { redirect?: string } => {
+    const destino = destinoSeguro(search["redirect"]);
+    return destino === "/" ? {} : { redirect: destino };
+  },
   head: () => pageHead("Entrar", "Acesso ao Sistema PROAP com e-mail e senha."),
   component: EntrarPage,
 });
 
 function EntrarPage() {
   const { redirect: destino } = Route.useSearch();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [modo, setModo] = useState<"entrar" | "recuperar">("entrar");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -37,7 +40,7 @@ function EntrarPage() {
       setErro("E-mail ou senha incorretos. Verifique e tente novamente.");
       return;
     }
-    navigate({ to: destinoSeguro(destino) });
+    router.history.push(destinoSeguro(destino));
   }
 
   async function aoRecuperar(e: FormEvent) {
