@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { HeartHandshake } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -12,7 +12,10 @@ function destinoSeguro(valor: unknown): string {
 }
 
 export const Route = createFileRoute("/entrar")({
-  validateSearch: (search: Record<string, unknown>) => ({ redirect: destinoSeguro(search.redirect) }),
+  validateSearch: (search: Record<string, unknown>): { redirect?: string } => {
+    const destino = destinoSeguro(search["redirect"]);
+    return destino === "/" ? {} : { redirect: destino };
+  },
   head: () => pageHead("Entrar", "Acesso ao Sistema PROAP com e-mail e senha."),
   component: EntrarPage,
 });
