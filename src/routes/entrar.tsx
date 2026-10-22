@@ -22,7 +22,7 @@ export const Route = createFileRoute("/entrar")({
 
 function EntrarPage() {
   const { redirect: destino } = Route.useSearch();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [modo, setModo] = useState<"entrar" | "recuperar">("entrar");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -40,7 +40,7 @@ function EntrarPage() {
       setErro("E-mail ou senha incorretos. Verifique e tente novamente.");
       return;
     }
-    navigate({ to: destinoSeguro(destino) });
+    router.history.push(destinoSeguro(destino));
   }
 
   async function aoRecuperar(e: FormEvent) {
